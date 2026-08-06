@@ -6,13 +6,42 @@ workload_above_rm_bound (util=0.833 > RM bound 0.693, still feasible):
 1
 0,0
 
-workload_overload (two identical tasks, util=1.33, T1 misses deadline):
+workload_overload (two identical tasks, util=1.33, infeasible):
 0
+[blank line]
 
-workload_constrained_dl (T0 has deadline=2 < period=4, T1 preempted once):
+workload_constrained_dl (T0 deadline=2 < period=4, T1 preempted once):
 1
 0,1
 
-workload_3tasks (3 tasks, hyperperiod=420, T1/T2 get preempted many times):
+workload_3tasks (3 tasks, hyperperiod=420, complex preemptions):
 1
 0,20,36
+
+workload_exec_eq_period (single task, exec=period=deadline, util=1.0):
+1
+0
+
+workload_exec_gt_period (exec=5 > period=4, impossible for any schedule):
+0
+[blank line]
+
+workload_exec_gt_deadline (exec=3 > deadline=2, always misses):
+0
+[blank line]
+
+workload_two_same_period (two tasks same period=4, total util=1.0, fits exactly):
+1
+0,0
+
+workload_deadline_gt_period (D > T for both tasks, no preemptions):
+1
+0,0
+
+workload_float_precision (exec=0.001, tests SCALE=1000 integer conversion):
+1
+0
+
+workload_deadline_gt_period_preempted (D > T, T0 preempts T1 once, LCM=15):
+1
+0,1
