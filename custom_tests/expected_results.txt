@@ -1,0 +1,18 @@
+workload_single (single task, trivially feasible):
+1
+0
+
+workload_above_rm_bound (util=0.833 > RM bound 0.693, still feasible):
+1
+0,0
+
+workload_overload (two identical tasks, util=1.33, T1 misses deadline):
+0
+
+workload_constrained_dl (T0 has deadline=2 < period=4, T1 preempted once):
+1
+0,1
+
+workload_3tasks (3 tasks, hyperperiod=420, T1/T2 get preempted many times):
+1
+0,20,36
