@@ -25,6 +25,16 @@ def scale_tasks(tasks):
     return [(round(e * SCALE), round(p * SCALE), round(d * SCALE)) for e, p, d in tasks]
 
 
+def assign_priorities(tasks_int):
+    # RM: shorter period = higher priority (lower rank number)
+    # tie-break by original task index for determinism
+    order = sorted(range(len(tasks_int)), key=lambda i: (tasks_int[i][1], i))
+    priority = [0] * len(tasks_int)
+    for rank, i in enumerate(order):
+        priority[i] = rank
+    return priority
+
+
 def compute_hyperperiod(tasks_int):
     return reduce(lcm, [p for _, p, _ in tasks_int])
 
@@ -35,6 +45,7 @@ def main():
     filename = sys.argv[1]
     tasks = parse_tasks(filename)
     tasks_int = scale_tasks(tasks)
+    priority = assign_priorities(tasks_int)
     hyperperiod = compute_hyperperiod(tasks_int)
 
 
